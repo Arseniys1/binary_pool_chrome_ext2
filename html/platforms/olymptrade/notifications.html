@@ -1,0 +1,54 @@
+<script type="x-template" id="notifications-template">
+    <div id="notifications">
+        <button :class="!run ? 'binary-pool-start-btn start' : 'binary-pool-start-btn stop'"
+                @click.prevent="startBtnClick" v-if="user !== null && user.settings.account_mode === 1">{{
+            !run ? 'Старт' : 'Стоп' }}
+        </button>
+
+        <div v-if="user !== null"
+             :class="user.settings.account_mode === 1 ? 'binary-pool-items with-btn' : 'binary-pool-items no-btn'">
+            <div class="binary-pool-item" v-for="notify in notify_list">
+                <div class="binary-pool-item-title" v-if="notify.user !== undefined">{{ notify.user.name }}</div>
+                <div class="binary-pool-body">
+                    <ul>
+                        <li>ID: {{ notify.id }}</li>
+                        <li>ID в платформе: {{ notify.platform_id }}</li>
+
+                        <li v-if="notify.account_mode === 0">Режим: Слушатель</li>
+                        <li v-else-if="notify.account_mode === 1">Режим: Источник</li>
+                        <li v-else-if="notify.account_mode === 2">Режим: Демо источник</li>
+                        <li v-else-if="notify.account_mode === 3">Режим: Демо слушатель</li>
+
+                        <li v-if="notify.direction === 1" class="text-success">Направление: UP</li>
+                        <li v-else-if="notify.direction === 0" class="text-danger">Направление: DOWN</li>
+
+                        <li>Сумма: {{ notify.sum / 100 }}</li>
+
+                        <li v-if="notify.status === 0" class="text-danger">Статус: Проигрыш</li>
+                        <li v-else-if="notify.status === 1" class="text-success">Статус: Выигрыш</li>
+                        <li v-else-if="notify.status === 2">Статус: Возврат</li>
+                        <li v-else-if="notify.status === 3">Статус: Нет статуса</li>
+                        <li v-else-if="notify.status === 4">Статус: Продажа</li>
+
+                        <li>Валютная пара: {{ notify.cur_pair }}</li>
+
+                        <li v-if="notify.demo">Демо режим</li>
+                    </ul>
+
+                    <ul v-if="notify.source_stat !== undefined" class="binary-pool-source-stat">
+                        <li class="text-success">Успешно: {{ notify.source_stat.success_count }}</li>
+                        <li class="text-success">Заработали: {{ notify.source_stat.win_sum / 100 }}</li>
+                        <li>Возврат: {{ notify.source_stat.ret_count }}</li>
+                        <li>Продажа: {{ notify.source_stat.cancel_count }}</li>
+                        <li class="text-danger">Проигрыш: {{ notify.source_stat.loss_count }}</li>
+                        <li class="text-danger">Проиграли: {{ notify.source_stat.loss_sum / 100 }}</li>
+                    </ul>
+
+                    <button v-if="notify.user !== null && notify.user.id !== user.id && notify.timer > 0" class="binary-pool-deal-open-btn"
+                            @click.prevent="dealOpen(notify)">Поставить {{ notify.timer }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

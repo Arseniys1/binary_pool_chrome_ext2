@@ -1,0 +1,39 @@
+<div id="binary-pool">
+    <button class="binary-pool-btn" @click.prevent="clickBtn">
+        B
+        i
+        n
+        a
+        r
+        y
+
+        P
+        o
+        o
+        l
+    </button>
+
+    <div class="binary-pool" :class="showMenu ? 'd-block' : 'd-none'">
+        <div class="btn-group">
+            <button :class="showMenuElement === 'notifications' ? 'btn-item active' : 'btn-item'"
+                    @click.prevent="changeMenuElement('notifications')" v-if="auth">Оповещения
+            </button>
+            <button :class="showMenuElement === 'settings' ? 'btn-item active' : 'btn-item'"
+                    @click.prevent="changeMenuElement('settings')">Настройки
+            </button>
+        </div>
+
+        <notifications :class="showMenuElement === 'notifications' ? 'd-block' : 'd-none'"/>
+        <settings :class="showMenuElement === 'settings' ? 'd-block' : 'd-none'"/>
+    </div>
+
+    <button class="binary-pool-close" v-if="showMenu" @click.prevent="clickBtn">
+        З
+        а
+        к
+        р
+        ы
+        т
+        ь
+    </button>
+</div>

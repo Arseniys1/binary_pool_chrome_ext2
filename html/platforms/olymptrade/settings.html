@@ -1,0 +1,60 @@
+<script type="x-template" id="settings-template">
+    <div id="settings">
+        <h3 class="binary-pool-title">Настройки</h3>
+
+        <div class="form-item">
+            <div class="form-item-title">API token</div>
+            <div class="form-item-body">
+                <label for="binary-pool-api-token">API token</label>
+                <input :type="showAPIToken ? 'text' : 'password'" name="binary-pool-api-token"
+                       id="binary-pool-api-token" :value="config.props.binaryPool.api_token">
+                <a class="no-href" @click.prevent="clickShowToken">Показать</a>
+                <a class="no-href" @click.prevent="saveToken">Сохранить</a>
+            </div>
+            <div :class="alerts.api_token.type === 'success' ? 'form-item-alert success' : 'form-item-alert danger'"
+                 v-if="alerts.api_token.show">
+                {{ alerts.api_token.text }}
+            </div>
+        </div>
+
+        <div class="form-item" v-if="auth && user.settings.account_mode !== undefined">
+            <div class="form-item-title">Режим аккаунта</div>
+            <div class="form-item-body">
+                <label for="binary-pool-account-mode">Режим аккаунта</label>
+                <select name="binary-pool-account-mode" id="binary-pool-account-mode">
+                    <option value="1" v-if="user.settings.account_mode === 1" selected>Источник</option>
+                    <option value="0" v-if="user.settings.account_mode === 1">Слушатель</option>
+
+                    <option value="0" v-if="user.settings.account_mode === 0" selected>Слушатель</option>
+                    <option value="1" v-if="user.settings.account_mode === 0">Источник</option>
+                </select>
+                <small>Режим аккаунта можно менять 1 раз в 10 минут</small>
+                <a class="no-href" @click.prevent="saveAccountMode">Сохранить</a>
+            </div>
+            <div :class="alerts.account_mode.type === 'success' ? 'form-item-alert success' : 'form-item-alert danger'"
+                 v-if="alerts.account_mode.show">
+                {{ alerts.account_mode.text }}
+            </div>
+        </div>
+
+        <div class="form-item" v-if="auth && user.settings.account_mode === 0">
+            <div class="form-item-title">Источник оповещений</div>
+            <div class="form-item-body">
+                <label for="binary-pool-notify-id">Источник оповещений</label>
+                <select name="binary-pool-notify-id" id="binary-pool-notify-id">
+                    <option :value="notify.source.id" v-for="notify in user.access">
+                        {{ notify.source.name }} |
+                        {{ notify.source.online ? 'Online' : 'Offline' }} | Статус:
+                        {{ notify.status === 1 ? 'Активна' : 'Истекла' }} | Тип:
+                        {{ notify.access_type == 0 ? 'Перманентная' : 'Истекаемая ' + notify.end_at }}
+                    </option>
+                </select>
+                <a class="no-href" @click.prevent="saveNotifyId">Сохранить</a>
+            </div>
+            <div :class="alerts.notify_id.type === 'success' ? 'form-item-alert success' : 'form-item-alert danger'"
+                 v-if="alerts.notify_id.show">
+                {{ alerts.notify_id.text }}
+            </div>
+        </div>
+    </div>
+</script>

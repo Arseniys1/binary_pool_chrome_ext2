@@ -1,0 +1,215 @@
+.binary-pool-btn {
+    width: 50px;
+    height: 260px;
+    padding-bottom: 20px;
+    position: fixed;
+    top: 35vh;
+    left: 0;
+    z-index: 2000;
+    background-color: #1d2a38;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 3px;
+    white-space: pre-line;
+}
+
+.binary-pool-btn:hover {
+    background-color: #192431;
+}
+
+.binary-pool {
+    position: fixed;
+    width: 500px;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 2001;
+    background-color: #243445;
+}
+
+.binary-pool-close {
+    height: 100vh;
+    width: 50px;
+    top: 0;
+    left: 500px;
+    position: fixed;
+    z-index: 2001;
+    font-size: 18px;
+    color: #fff;
+    background-color: #1d2a38;
+    white-space: pre-line;
+}
+
+.binary-pool-close:hover {
+    background-color: #192431;
+}
+
+.btn-group {
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid #212C38;
+}
+
+.btn-group > .btn-item {
+    display: inline-block;
+    background-color: #243445;
+    padding: 5px 10px;
+    height: 100%;
+    color: #fff;
+}
+
+.btn-group > .btn-item:hover {
+    background-color: #212C38;
+}
+
+.btn-group > .btn-item.active {
+    background-color: #212C38;
+}
+
+.binary-pool-title {
+    margin: 20px 0 30px 0;
+    color: #fff;
+    text-align: center;
+}
+
+.form-item {
+    margin-bottom: 20px;
+}
+
+.form-item-title {
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #1d2a38;
+}
+
+.form-item-body {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+}
+
+.form-item input[type="text"], input[type="password"] {
+    background-color: #1d2a38;
+    border: 1px solid #17232f;
+    color: #fff;
+    padding: 5px 10px;
+    width: 95%;
+    margin: 10px 0;
+}
+
+.form-item select {
+    width: 100%;
+    padding: 5px 10px;
+    margin: 10px 0;
+    color: #fff;
+    background-color: #1d2a38;
+    border: 1px solid #17232f;
+}
+
+a.no-href {
+    color: #fff;
+    cursor: pointer;
+}
+
+a.no-href:hover {
+    text-decoration: underline;
+}
+
+.form-item-alert {
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.form-item-alert.success {
+    background-color: #2aa76d;
+}
+
+.form-item-alert.danger {
+    background-color: #902626;
+}
+
+.d-block {
+    display: block;
+}
+
+.d-none {
+    display: none;
+}
+
+.binary-pool-start-btn {
+    width: 100%;
+    height: 50px;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.binary-pool-start-btn.start {
+    background-color: #2aa76d;
+}
+
+.binary-pool-start-btn.stop {
+    background-color: #902626;
+}
+
+.text-success {
+    color: #2aa76d;
+}
+
+.text-danger {
+    color: #902626;
+}
+
+.binary-pool-items {
+    margin-top: 10px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.binary-pool-items.with-btn {
+    height: calc(100vh - 101px);
+    max-height: calc(100vh - 101px);
+}
+
+.binary-pool-items.no-btn {
+    height: calc(100vh - 51px);
+    max-height: calc(100vh - 51px);
+}
+
+.binary-pool-item {
+    padding: 10px 0;
+    text-align: center;
+    background-color: #192431;
+    margin-bottom: 10px;
+}
+
+.binary-pool-item > .binary-pool-item-title {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.binary-pool-item > .binary-pool-body {
+    font-size: 14px;
+    color: #fff;
+}
+
+.binary-pool-deal-open-btn {
+    color: #fff;
+    width: 100%;
+    font-size: 14px;
+    background-color: #2aa76d;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.binary-pool-source-stat {
+    margin-top: 10px;
+}
+
+.binary-pool-source-stat > li {
+    display: inline-block;
+    margin-right: 10px;
+}
